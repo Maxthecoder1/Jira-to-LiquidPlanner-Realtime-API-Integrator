@@ -17,15 +17,12 @@ app = flask.Flask(__name__)
 def index():
     if flask.request.method == 'POST':
         print("I got a post.....")
-        #print(flask.request.get_json())
         jsondata = flask.request.get_json()
         print(jsondata)
         if 'webhookEvent' in jsondata.keys():
             jwebhook(jsondata)
         else:
             lwebhook(jsondata)
-        #jsondata = flask.request.data
-        #data = json.loads(jsondata) # turns data into dictionary taht can be accessed by: data[entry][item]
         return "Done"
     else:
         print(" ANOTHER GET") # see this in console
@@ -33,14 +30,13 @@ def index():
 
 
 def jwebhook(jsondata):
-    credentials = BasicCredentials('Max.Jeanphilippe@iacapps.com', 'maxavier')
+    credentials = BasicCredentials('email', 'password') # Entter your LiquidPlanner email and pasword
     lp = liquidplanner.LiquidPlanner(credentials)
     foundproject = 0
     print("I got a jira post")
     print("here is my jira json: {}".format(jsondata))
     if 'updated' in jsondata['webhookEvent'] or 'created' in jsondata['webhookEvent']:
         projects = lp.projects.all()
-
         for p in projects:
             if p['name'] in jsondata['issue']['fields']['project']['name']:
                 id = p['id']
@@ -61,7 +57,6 @@ def jwebhook(jsondata):
                  "description": jsondata['issue']['fields']['summary']})
             print(task)
             print("done")
-
     return "JIRA Webhook Accepted"
 
 
@@ -69,7 +64,7 @@ def lwebhook(jsondata):
     print("I got a liquidplanner post")
     return "LiquidPlanner Webhook Accepted"
 
-def jiratoliquiddate(aa):
+def jiratoliquiddate(aa): # for use when adding a date from JIRA to LiquidPlanner
     z = aa.split("-")
     year = int(z[0])
     month = int(z[1])
