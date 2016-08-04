@@ -1,17 +1,17 @@
 # Jira-to-LiquidPlanner
-Description
+# Description
 
 a Python Flask web application for realtime integration of JIRA API and LiquidPlanner API
 
 
 
-Why
+# Why
 
 To make updates in JIRA and to see them in LiquidPlanner and vice-versa
 
 
 
-Dependencies
+# Dependencies
 
 Flask
 
@@ -21,7 +21,7 @@ ngrok
 
 
 
-How
+# How
 
 Setup an ngrok tunnel to point to your flask app on whatever port you chose in the flask app 
 
@@ -33,7 +33,7 @@ Use JIRA as you normally would
 
 
 
-To-Do
+# To-Do
 
 Map more fields in the JIRA webhook to LiquidPlanner fields
 
