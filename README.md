@@ -1,4 +1,4 @@
-# Jira-to-LiquidPlanner
+# Jira-to-LiquidPlanner Realtime API Integrator
 # Description
 
 a Python Flask web application for realtime integration of JIRA API and LiquidPlanner API
