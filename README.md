@@ -41,4 +41,4 @@ Map LiquidPlanner webhook fields to JIRA fields
 
 Check webhooks for last issue update timestamps to prevent infinite loops
 
-© 2016, Maxavier Jeanphilippe
+
